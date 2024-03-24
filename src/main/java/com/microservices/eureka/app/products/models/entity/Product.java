@@ -1,6 +1,6 @@
 package com.microservices.eureka.app.products.models.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,11 +8,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "products")
+@AllArgsConstructor
+@Builder
+@Data
+@NoArgsConstructor
 public class Product {
 
 	@Id
@@ -22,8 +28,7 @@ public class Product {
 	private String name;
 	private Double price;
 	
-	@Column(name = "created_at")
-	@Temporal(TemporalType.DATE)
-	private Date createdAt;
+	@Column(name = "creation_date")
+	private LocalDate creationDate;
 	
 }
